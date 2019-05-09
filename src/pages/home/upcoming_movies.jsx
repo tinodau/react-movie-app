@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Menu } from "../../components";
 import { BASE_URL, KEY, POSTER_PORTRAIT_BIG } from "../../services/api";
 
 import {
@@ -19,53 +18,37 @@ class UpcomingMovies extends Component {
     constructor() {
         super();
         this.state = {
-            moviesInTheathers: []
+            upcomingMovies: []
         };
     }
 
     componentDidMount() {
-        // Get Movies in teathers from API
+        // Get Upcoming Movies from API
         axios
             .get(`${BASE_URL}/movie/upcoming?${KEY}&language=en-US&page=1`)
             .then(res => {
-                const moviesInTheathers = res.data.results;
-                this.setState({ moviesInTheathers });
+                const upcomingMovies = res.data.results;
+                this.setState({ upcomingMovies });
             });
     }
 
     render() {
         return (
             <React.Fragment>
-                <Menu />
-                <div className="body-container">
-                    <Grid container spacing={24}>
-                        <Grid item xs={12}>
-                            <Paper className="body-padding">
-                                {/* Movies in Teathers */}
-                                <Typography color="inherit" className="in-teathers-title">
-                                    In Teathers
-                </Typography>
-                                <GridList cellHeight={300} cols={5}>
-                                    {this.state.moviesInTheathers.slice(0, 5).map(tile => (
-                                        <GridListTile key={tile.id} cols={tile.cols || 1}>
-                                            <img
-                                                src={`${POSTER_PORTRAIT_BIG + tile.poster_path}`}
-                                                alt={tile.title}
-                                            />
-                                            <GridListTileBar title={tile.title} />
-                                        </GridListTile>
-                                    ))}
-                                </GridList>
-                                <Typography color="inherit" className="in-teathers-more">
-                                    More
-                </Typography>
-                                {/* Movies in Teathers */}
+                <GridList cellHeight={300} cols={5} spacing={16}>
+                    {this.state.upcomingMovies.slice(0, 10).map(movie => (
+                        <GridListTile key={movie.id} cols={movie.cols || 1} row={movie.row || 2}>
+                            <img
+                                src={`${POSTER_PORTRAIT_BIG + movie.poster_path}`}
+                                alt={movie.title}
+                            />
+                            <GridListTileBar title={movie.title} />
+                        </GridListTile>
 
-                                <Divider variant="middle" />
-                            </Paper>
-                        </Grid>
-                    </Grid>
-                </div>
+                    ))}
+
+
+                </GridList>
             </React.Fragment>
         );
     }

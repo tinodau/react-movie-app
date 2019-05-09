@@ -3,6 +3,7 @@ import { Menu, MoviesInTeathers } from "../../components";
 import { Grid, Paper, Typography, Divider } from "@material-ui/core";
 import "./home.css";
 import "./upcoming_movies"
+import UpcomingMovies from "./upcoming_movies";
 
 class Home extends Component {
   state = {
@@ -27,6 +28,7 @@ class Home extends Component {
                 <Typography color="inherit" className="upcoming-movies-title">
                   Upcoming Movies
                 </Typography>
+                <UpcomingMovies />
                 {/* Upcoming Movies */}
 
                 <Divider variant="middle" />
@@ -41,7 +43,7 @@ class Home extends Component {
           </Grid>
         </div>
       </React.Fragment>
-      
+
     );
   }
 }
