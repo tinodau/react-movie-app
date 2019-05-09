@@ -7,20 +7,20 @@ import {
   GridListTileBar
 } from "@material-ui/core";
 import { BASE_URL, KEY, POSTER_PORTRAIT_BIG } from "../../services/api";
-import "./movies-in-teathers.css";
+import "./popular-movies.css";
 
-class MoviesInTeathers extends Component {
+class PopularMovies extends Component {
   state = {
-    moviesInTheathers: []
+    popularMovies: []
   };
 
   // Get Movies in teathers from API
   componentDidMount() {
     axios
-      .get(`${BASE_URL}/movie/now_playing?${KEY}&language=en-US&page=1`)
+      .get(`${BASE_URL}/movie/popular?${KEY}&language=en-US&page=1`)
       .then(res => {
-        const moviesInTheathers = res.data.results;
-        this.setState({ moviesInTheathers });
+        const popularMovies = res.data.results;
+        this.setState({ popularMovies });
       })
       .catch(err => {
         console.log(err);
@@ -30,11 +30,11 @@ class MoviesInTeathers extends Component {
   render() {
     return (
       <React.Fragment>
-        <Typography color="inherit" className="in-teathers-title">
-          In Teathers
+        <Typography color="inherit" className="popular-movies">
+          Popular Movies
         </Typography>
-        <GridList cellHeight={300} cols={5} spacing={16}>
-          {this.state.moviesInTheathers.slice(0, 5).map(movie => (
+        <GridList cellHeight={220} cols={7} spacing={8}>
+          {this.state.popularMovies.slice(0, 7).map(movie => (
             <GridListTile key={movie.id} cols={movie.cols || 1}>
               <img
                 src={`${POSTER_PORTRAIT_BIG + movie.poster_path}`}
@@ -53,4 +53,4 @@ class MoviesInTeathers extends Component {
   }
 }
 
-export default MoviesInTeathers;
+export default PopularMovies;

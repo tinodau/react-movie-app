@@ -1,9 +1,15 @@
 import React, { Component } from "react";
-import { Menu, MoviesInTeathers, TvsOnAir } from "../../components";
+import {
+  Menu,
+  MoviesInTeathers,
+  TvsOnAir,
+  UpcomingMovies,
+  PopularMovies,
+  Footer
+} from "../../components";
 import {
   Grid,
   Paper,
-  Typography,
   Divider,
   GridList,
   GridListTile
@@ -20,27 +26,24 @@ class Home extends Component {
             <Grid item xs={12}>
               <Paper className="body-padding">
                 <MoviesInTeathers />
-                <Typography color="inherit" className="show-more">
-                  Show more <i className="fas fa-angle-double-right" />
-                </Typography>
                 <Divider variant="middle" />
 
                 <GridList cellHeight="auto" cols={2} spacing={40}>
-                  {/* <Divider variant="middle" /> */}
                   <GridListTile>
-                    <Typography color="inherit" className="tvs-on-air-title">
-                      Upcoming Movies
-                    </Typography>
+                    <UpcomingMovies />
                   </GridListTile>
 
                   <GridListTile>
                     <TvsOnAir />
                   </GridListTile>
                 </GridList>
+                <Divider variant="middle" />
+                <PopularMovies />
               </Paper>
             </Grid>
           </Grid>
         </div>
+        <Footer />
       </React.Fragment>
     );
   }
