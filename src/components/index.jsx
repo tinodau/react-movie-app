@@ -1,3 +1,3 @@
 import Menu from "./menu/menu";
-
-export { Menu };
+import MoviesInTeathers from "./moviesInTeathers/moviesInTeathers";
+export { Menu, MoviesInTeathers };

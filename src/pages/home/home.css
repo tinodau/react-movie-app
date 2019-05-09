@@ -8,17 +8,24 @@
   .body-padding {
     padding: 20px;
   }
+}
 
-  .in-teathers-title {
-    font-weight: 500 !important;
-    padding-bottom: 10px;
-    font-size: 18px;
-  }
+.show-more {
+  font-weight: 500 !important;
+  padding: 10px 0;
+  font-size: 16px;
+  text-align: right;
+}
 
-  .in-teathers-more {
-    font-weight: 500 !important;
-    padding: 10px 0;
-    font-size: 16px;
-    text-align: right;
-  }
+.show-more:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.tvs-on-air-title,
+.upcoming-movies-title {
+  padding-top: 20px;
+  font-weight: 500 !important;
+  padding-bottom: 10px;
+  font-size: 18px !important;
 }
