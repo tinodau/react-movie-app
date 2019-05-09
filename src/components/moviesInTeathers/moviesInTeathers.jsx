@@ -21,6 +21,9 @@ class MoviesInTeathers extends Component {
       .then(res => {
         const moviesInTheathers = res.data.results;
         this.setState({ moviesInTheathers });
+      })
+      .catch(err => {
+        console.log(err);
       });
   }
 

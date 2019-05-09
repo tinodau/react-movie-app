@@ -1,13 +1,16 @@
 import React, { Component } from "react";
-import { Menu, MoviesInTeathers } from "../../components";
-import { Grid, Paper, Typography, Divider } from "@material-ui/core";
+import { Menu, MoviesInTeathers, TvsOnAir } from "../../components";
+import {
+  Grid,
+  Paper,
+  Typography,
+  Divider,
+  GridList,
+  GridListTile
+} from "@material-ui/core";
 import "./home.css";
 
 class Home extends Component {
-  state = {
-    tvsOnTheAir: []
-  };
-
   render() {
     return (
       <React.Fragment>
@@ -22,19 +25,18 @@ class Home extends Component {
                 </Typography>
                 <Divider variant="middle" />
 
-                {/* Upcoming Movies */}
-                <Typography color="inherit" className="upcoming-movies-title">
-                  Upcoming Movies
-                </Typography>
-                {/* Upcoming Movies */}
+                <GridList cellHeight="auto" cols={2} spacing={40}>
+                  {/* <Divider variant="middle" /> */}
+                  <GridListTile>
+                    <Typography color="inherit" className="tvs-on-air-title">
+                      Upcoming Movies
+                    </Typography>
+                  </GridListTile>
 
-                <Divider variant="middle" />
-                {/* TVs On Air */}
-
-                <Typography color="inherit" className="tvs-on-air-title">
-                  TVs On Air
-                </Typography>
-                {/* TVs On Air */}
+                  <GridListTile>
+                    <TvsOnAir />
+                  </GridListTile>
+                </GridList>
               </Paper>
             </Grid>
           </Grid>
