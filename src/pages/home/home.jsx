@@ -14,6 +14,7 @@ import {
 } from "@material-ui/core";
 
 import "./home.css";
+import "./upcoming_movies"
 
 class Home extends Component {
   constructor() {
@@ -67,6 +68,7 @@ class Home extends Component {
           </Grid>
         </div>
       </React.Fragment>
+      
     );
   }
 }
