@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { BASE_URL, KEY, POSTER_PORTRAIT_SMALL } from "../../services/api";
-import "./tvs-on-air.css";
+import { BASE_URL, KEY, POSTER_PORTRAIT_SMALL } from "../services/api";
 import { Grid, Typography } from "@material-ui/core";
 
 class TvsOnAir extends Component {

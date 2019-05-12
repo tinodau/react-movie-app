@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { BASE_URL, KEY, POSTER_PORTRAIT_SMALL } from "../../services/api";
+import { BASE_URL, KEY, POSTER_PORTRAIT_SMALL } from "../services/api";
 import { Typography, Grid } from "@material-ui/core";
-
-import "./upcoming-movies.css";
 
 class UpcomingMovies extends Component {
   state = {

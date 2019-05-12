@@ -1,5 +1,6 @@
 import React from "react";
-import { Home } from "./pages/";
+import Home from "./pages/home";
+import { Route, Switch } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
@@ -13,7 +14,10 @@ const theme = createMuiTheme({
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
-      <Home />
+      {/* <Home /> */}
+      <Switch>
+        <Route path="/" exact component={Home} />
+      </Switch>
     </MuiThemeProvider>
   );
 }
