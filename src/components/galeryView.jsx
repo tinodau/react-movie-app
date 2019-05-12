@@ -19,7 +19,7 @@ class GaleryView extends Component {
 
     return (
       <React.Fragment>
-        <Typography color="inherit" className="in-teathers-title">
+        <Typography color="inherit" className="section-title">
           {sectionTitle}
         </Typography>
         <GridList cellHeight={posterHeight} cols={totalMovies} spacing={16}>

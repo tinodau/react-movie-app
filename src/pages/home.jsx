@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { BASE_URL, KEY, POSTER_PORTRAIT_BIG } from "../services/api";
 import Navbar from "../components/common/navbar";
 import GaleryView from "../components/galeryView";
-import UpcomingMovies from "../components/upcomingMovies";
-import TvsOnAir from "../components/tvsOnAir";
+import ListView from "../components/listView";
 import Footer from "../components/footer";
+import {
+  BASE_URL,
+  KEY,
+  POSTER_PORTRAIT_BIG,
+  POSTER_PORTRAIT_SMALL
+} from "../services/api";
 import {
   Grid,
   Paper,
@@ -17,7 +21,9 @@ import {
 export default class Home extends Component {
   state = {
     moviesInTeathers: [],
-    popularMovies: []
+    popularMovies: [],
+    tvsOnAir: [],
+    upcomingMovies: []
   };
 
   getMoviesInTeathers() {
@@ -44,16 +50,42 @@ export default class Home extends Component {
       });
   }
 
+  getTvsOnAir() {
+    axios
+      .get(`${BASE_URL}/tv/on_the_air?${KEY}&language=en-US&page=1`)
+      .then(res => {
+        const tvsOnAir = res.data.results;
+        this.setState({ tvsOnAir });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  getUpcomingMovies() {
+    axios
+      .get(`${BASE_URL}/movie/upcoming?${KEY}&language=en-US&page=1`)
+      .then(res => {
+        const upcomingMovies = res.data.results;
+        this.setState({ upcomingMovies });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   componentDidMount() {
+    this.getTvsOnAir();
     this.getMoviesInTeathers();
     this.getPopularMovies();
+    this.getUpcomingMovies();
   }
 
   render() {
     return (
       <React.Fragment>
         <Navbar />
-        <Grid container spacing={8} className="body-container">
+        <Grid container className="body-container">
           <Grid item lg={1} />
           <Grid item lg={10}>
             <Paper className="body-padding">
@@ -68,11 +100,23 @@ export default class Home extends Component {
 
               <GridList cellHeight="auto" cols={2} spacing={40}>
                 <GridListTile>
-                  <UpcomingMovies />
+                  <ListView
+                    sectionTitle="Upcoming Movies"
+                    moviesList={this.state.upcomingMovies}
+                    totalMovies={3}
+                    synopsisCharacters={150}
+                    posterSize={POSTER_PORTRAIT_SMALL}
+                  />
                 </GridListTile>
 
                 <GridListTile>
-                  <TvsOnAir />
+                  <ListView
+                    sectionTitle="TVs On Air"
+                    moviesList={this.state.tvsOnAir}
+                    totalMovies={3}
+                    synopsisCharacters={150}
+                    posterSize={POSTER_PORTRAIT_SMALL}
+                  />
                 </GridListTile>
               </GridList>
 
@@ -89,6 +133,7 @@ export default class Home extends Component {
           <Grid item lg={1} />
         </Grid>
         <Footer />
+        {console.log(this.state.upcomingMovies)}
       </React.Fragment>
     );
   }
