@@ -82,6 +82,8 @@ export default class Home extends Component {
   }
 
   render() {
+    const isMobile = window.innerWidth < 480;
+
     return (
       <React.Fragment>
         <Navbar />
@@ -92,7 +94,7 @@ export default class Home extends Component {
               <GaleryView
                 sectionTitle="Movies in Teathers"
                 moviesList={this.state.moviesInTeathers}
-                totalMovies={5}
+                totalMovies={isMobile ? 2 : 5}
                 posters={POSTER_PORTRAIT_BIG}
                 posterHeight={300}
               />
@@ -124,7 +126,7 @@ export default class Home extends Component {
               <GaleryView
                 sectionTitle="Popular This Week"
                 moviesList={this.state.popularMovies}
-                totalMovies={7}
+                totalMovies={isMobile ? 6 : 7}
                 posters={POSTER_PORTRAIT_BIG}
                 posterHeight={220}
               />
@@ -133,7 +135,6 @@ export default class Home extends Component {
           <Grid item lg={1} />
         </Grid>
         <Footer />
-        {console.log(this.state.upcomingMovies)}
       </React.Fragment>
     );
   }
