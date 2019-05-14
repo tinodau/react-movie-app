@@ -17,6 +17,7 @@ import {
   GridList,
   GridListTile
 } from "@material-ui/core";
+import ShowMoreLink from "../components/common/showMoreLink";
 
 export default class Home extends Component {
   state = {
@@ -93,47 +94,51 @@ export default class Home extends Component {
             <Paper className="body-padding">
               <GaleryView
                 sectionTitle="Movies in Teathers"
-                category="Movie"
+                type="movie"
                 moviesList={this.state.moviesInTeathers}
                 totalMovies={isMobile ? 2 : 5}
                 posters={POSTER_PORTRAIT_BIG}
                 posterHeight={300}
               />
+              <ShowMoreLink type="movie" category="now-playing" />
               <Divider variant="middle" />
 
               <GridList cellHeight="auto" cols={2} spacing={40}>
                 <GridListTile>
                   <ListView
                     sectionTitle="Upcoming Movies"
-                    category="Movie"
+                    type="movie"
                     moviesList={this.state.upcomingMovies}
                     totalMovies={3}
                     synopsisCharacters={150}
                     posterSize={POSTER_PORTRAIT_SMALL}
                   />
+                  <ShowMoreLink type="movie" category="upcoming" />
                 </GridListTile>
 
                 <GridListTile>
                   <ListView
                     sectionTitle="TVs On Air"
-                    category="TV"
+                    type="tv"
                     moviesList={this.state.tvsOnAir}
                     totalMovies={3}
                     synopsisCharacters={150}
                     posterSize={POSTER_PORTRAIT_SMALL}
                   />
+                  <ShowMoreLink type="tv" category="on-air" />
                 </GridListTile>
               </GridList>
 
               <Divider variant="middle" />
               <GaleryView
-                sectionTitle="Popular This Week"
-                category="TV"
+                sectionTitle="Popular Movies This Week"
+                type="movie"
                 moviesList={this.state.popularMovies}
                 totalMovies={isMobile ? 6 : 7}
                 posters={POSTER_PORTRAIT_BIG}
                 posterHeight={220}
               />
+              <ShowMoreLink type="movie" category="popular" />
             </Paper>
           </Grid>
           <Grid item lg={1} />

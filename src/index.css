@@ -52,11 +52,25 @@ body {
   text-decoration: underline;
 }
 
+.show-more-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.show-more-link:hover {
+  text-decoration: underline;
+}
+
 .title-link {
-  color: rgba(0, 0, 0, 0.87);
+  color: inherit;
   text-decoration: none;
 }
 
 .title-link:hover {
   text-decoration: underline;
+}
+
+.no-decoration {
+  text-decoration: none;
+  color: inherit;
 }

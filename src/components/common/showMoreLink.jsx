@@ -1,10 +1,13 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
 
-const ShowMoreLink = () => {
+const ShowMoreLink = ({ type, category }) => {
   return (
     <Typography color="inherit" className="show-more">
-      Show more <i className="fas fa-angle-double-right" />
+      <RouterLink to={`/${type}/${category}`} className="show-more-link">
+        Show more <i className="fas fa-angle-double-right" />
+      </RouterLink>
     </Typography>
   );
 };

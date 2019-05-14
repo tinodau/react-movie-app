@@ -7,6 +7,7 @@ import {
   Menu,
   MenuItem
 } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
 import SearchForm from "./searchForm";
 
 class Navbar extends Component {
@@ -40,9 +41,21 @@ class Navbar extends Component {
         open={isMenuMovieOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>Popular Movie</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>Top Rated Movie</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>Movies On Air</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>
+          <RouterLink to="/movie/popular" className="no-decoration">
+            Popular Movie
+          </RouterLink>
+        </MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>
+          <RouterLink to="/movie/top-rated" className="no-decoration">
+            Top Rated Movie
+          </RouterLink>
+        </MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>
+          <RouterLink to="/movie/now-playing" className="no-decoration">
+            Movies In Teathers
+          </RouterLink>
+        </MenuItem>
       </Menu>
     );
 
@@ -54,9 +67,21 @@ class Navbar extends Component {
         open={isMenuTvOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>Popular TV Series</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>Top Rated TV Series</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>TVs On Air</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>
+          <RouterLink to="/tv/popular" className="no-decoration">
+            Popular TV Series
+          </RouterLink>
+        </MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>
+          <RouterLink to="/tv/top-rated" className="no-decoration">
+            Top Rated TV Series
+          </RouterLink>
+        </MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>
+          <RouterLink to="/tv/on-air" className="no-decoration">
+            TVs On Air
+          </RouterLink>
+        </MenuItem>
       </Menu>
     );
 
@@ -85,7 +110,11 @@ class Navbar extends Component {
                   >
                     TV Shows
                   </Button>
-                  <Button color="inherit">Genre</Button>
+                  <Button color="inherit">
+                    <RouterLink to="/genre" className="no-decoration">
+                      Genre
+                    </RouterLink>
+                  </Button>
                 </Grid>
 
                 <Grid item lg={3}>
