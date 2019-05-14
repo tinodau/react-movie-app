@@ -93,6 +93,7 @@ export default class Home extends Component {
             <Paper className="body-padding">
               <GaleryView
                 sectionTitle="Movies in Teathers"
+                category="Movie"
                 moviesList={this.state.moviesInTeathers}
                 totalMovies={isMobile ? 2 : 5}
                 posters={POSTER_PORTRAIT_BIG}
@@ -104,6 +105,7 @@ export default class Home extends Component {
                 <GridListTile>
                   <ListView
                     sectionTitle="Upcoming Movies"
+                    category="Movie"
                     moviesList={this.state.upcomingMovies}
                     totalMovies={3}
                     synopsisCharacters={150}
@@ -114,6 +116,7 @@ export default class Home extends Component {
                 <GridListTile>
                   <ListView
                     sectionTitle="TVs On Air"
+                    category="TV"
                     moviesList={this.state.tvsOnAir}
                     totalMovies={3}
                     synopsisCharacters={150}
@@ -125,6 +128,7 @@ export default class Home extends Component {
               <Divider variant="middle" />
               <GaleryView
                 sectionTitle="Popular This Week"
+                category="TV"
                 moviesList={this.state.popularMovies}
                 totalMovies={isMobile ? 6 : 7}
                 posters={POSTER_PORTRAIT_BIG}
